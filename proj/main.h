@@ -4,6 +4,8 @@
 #include <iostream>
 
 #include "raster.h"
+#include "matrix.h"
+#include "loader.h"
 
 GLuint tex;
 
