@@ -2,7 +2,6 @@
 #define _RASTER_
 
 #include "pixel.h"
-#include "definitions.h"
 
 #include <stdio.h>
 

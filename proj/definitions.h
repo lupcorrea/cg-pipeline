@@ -4,6 +4,8 @@
 #define IMAGE_WIDTH  512
 #define IMAGE_HEIGHT 512
 
+#define DIM 4
+
 extern unsigned char * FBptr;
 
 #endif
