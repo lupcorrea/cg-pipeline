@@ -32,6 +32,9 @@ void Loader::loadFile() {
 Vertex Loader::getVertexAt (int position) {
     return vertexList [position];
 }
+void Loader::setVertexAt (int position, Vertex vIn) {
+    vertexList [position] = vIn;
+}
 Pixel Loader::getPixelAt (int position) {
     return vertexList [position].convertToPixel();
 }

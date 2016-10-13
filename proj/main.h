@@ -2,6 +2,7 @@
 #include <OpenGL/glu.h>
 #include <GLUT/glut.h>
 #include <iostream>
+#include <math.h>
 
 #include "raster.h"
 #include "matrix.h"

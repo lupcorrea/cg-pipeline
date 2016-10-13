@@ -21,6 +21,7 @@ class Loader {
     
     /* Vertex list methods */
     Vertex getVertexAt (int position);
+    void setVertexAt (int position, Vertex vIn);
     Pixel getPixelAt (int position);
     int getVertexListSize();
     
