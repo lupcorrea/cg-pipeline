@@ -9,8 +9,13 @@ void drawPixel (Pixel p1) {
         FBptr[curr_pos] = p1.getR();
         FBptr[curr_pos + 1] = p1.getG();
         FBptr[curr_pos + 2] = p1.getB();
-        FBptr[curr_pos + 3] = p1.getA();    
-    }    
+        FBptr[curr_pos + 3] = p1.getA();
+    }
+}
+
+int biggerThanScreen (Pixel p1) {
+    if (p1.getX() >= IMAGE_WIDTH || p1.getY() >= IMAGE_HEIGHT) return 1;
+    return 0;
 }
 
 void setNextColor (Pixel p1, Pixel p2, Pixel *p) {
