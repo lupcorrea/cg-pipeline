@@ -12,19 +12,19 @@ void MyGlDraw () {
     
     /* Model matrix */
     Matrix model;
-    model.setValueAt (0, 0, 1);
-    model.setValueAt (1, 1, 1);
-    model.setValueAt (2, 2, 1);
+    model.setValueAt (0, 0, 2);
+    model.setValueAt (1, 1, 2);
+    model.setValueAt (2, 2, 2);
     
     /* Camera parameters */
     double cameraPos [] = {0, 0, 5};
     double cameraUp [] = {0, 1, 0};
-    double cameraLookAt [] = {0, 0, 0};
+    double cameraLookAt [] = {0, 1, 1};
     
     /* Orthonormal system */
     // Z axis
     double norm (0);
-    for (int i = 0; i < 3; i++) norm += pow(cameraPos [i] - cameraLookAt [i], 2) ;
+    for (int i = 0; i < 3; i++) norm += pow (cameraPos [i] - cameraLookAt [i], 2) ;
     norm = sqrt (norm);
     double zCam [3];
     if (norm != 0) {
@@ -36,7 +36,7 @@ void MyGlDraw () {
     norm = 0;
     double xCam [3];
     xCam [0] = (cameraUp [1] * zCam [2]) - (cameraUp [2] * zCam [1]); norm += (xCam [0] * xCam [0]);
-    xCam [1] = (cameraUp [2] * zCam [1]) - (cameraUp [1] * zCam [2]); norm += (xCam [1] * xCam [1]);
+    xCam [1] = (cameraUp [2] * zCam [0]) - (cameraUp [0] * zCam [2]); norm += (xCam [1] * xCam [1]);
     xCam [2] = (cameraUp [0] * zCam [1]) - (cameraUp [1] * zCam [0]); norm += (xCam [2] * xCam [2]);
     norm = sqrt (norm);
     if (norm != 0) {
@@ -46,7 +46,7 @@ void MyGlDraw () {
     norm = 0;
     double yCam [3];
     yCam [0] = (zCam [1] * xCam [2]) - (zCam [2] * xCam [1]); norm += (yCam [0] * yCam [0]);
-    yCam [1] = (zCam [2] * xCam [1]) - (zCam [1] * xCam [2]); norm += (yCam [1] * yCam [1]);
+    yCam [1] = (zCam [2] * xCam [0]) - (zCam [0] * xCam [2]); norm += (yCam [1] * yCam [1]);
     yCam [2] = (zCam [0] * xCam [1]) - (zCam [1] * xCam [0]); norm += (yCam [2] * yCam [2]);
     norm = sqrt (norm);
     if (norm != 0) {
@@ -130,6 +130,8 @@ void MyGlDraw () {
         //if (!biggerThanScreen (p1) && !biggerThanScreen (p2) && !biggerThanScreen (p3)) 
         drawTriangle (p1, p2, p3);
     }
+    
+    printf ("\n---");
 }
 
 int main (int argc, char **argv) {
