@@ -98,8 +98,8 @@ void MyGlDraw () {
     screenT.setValueAt (1, 3, 1);
     // Scale
     Matrix screenS;
-    screenS.setValueAt (0, 0, 10);
-    screenS.setValueAt (1, 1, 10);
+    screenS.setValueAt (0, 0, (IMAGE_WIDTH-1)/2);
+    screenS.setValueAt (1, 1, (IMAGE_HEIGHT-1)/2);
     // Actual viewport matrix 
     Matrix viewport;
     screenS.multiplyByMatrix (screenT, &viewport);

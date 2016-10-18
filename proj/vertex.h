@@ -13,6 +13,7 @@ class Vertex {
         data [0] = a;
         data [1] = b;
         data [2] = c;
+        data [3] = 1;
     }
     
     double getCoordinate (int position) { return data [position]; }
