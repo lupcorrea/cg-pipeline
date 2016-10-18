@@ -1,6 +1,16 @@
 #include "main.h"
 
+double angle = 0;
+
 void MyGlDraw () {
+    Pixel pClean (0, 0, 0, 0, 0);
+    for (int i = 0; i < IMAGE_WIDTH; i++) {
+        for (int j = 0; j < IMAGE_HEIGHT; j++) {
+            pClean.setX (i);
+            pClean.setY (j);
+            drawPixel (pClean);
+        }
+    }
     
     /* Loader stuff */
     Loader loader;
@@ -11,15 +21,24 @@ void MyGlDraw () {
         printf ("%d\t%d\t%d\n", loader.getTriangleFrom (i). getValueFrom (0), loader.getTriangleFrom (i). getValueFrom (1), loader.getTriangleFrom (i). getValueFrom (2));
     
     /* Model matrix */
-    Matrix model;
-    model.setValueAt (0, 0, 2);
-    model.setValueAt (1, 1, 2);
-    model.setValueAt (2, 2, 2);
+    Matrix model, rotation, scale;
+    // Scale matrix
+    scale.setValueAt (0, 0, 3);
+    scale.setValueAt (1, 1, 3);
+    scale.setValueAt (2, 2, 3);
+    // Rotation matrix
+    angle += DEGREES;
+    rotation.setValueAt (0, 0, cos (angle));
+    rotation.setValueAt (0, 2, sin (angle));
+    rotation.setValueAt (2, 0, -sin (angle));
+    rotation.setValueAt (2, 2, cos (angle));
+    // Actual model matrix
+    scale.multiplyByMatrix (rotation, &model);
     
     /* Camera parameters */
     double cameraPos [] = {0, 0, 5};
     double cameraUp [] = {0, 1, 0};
-    double cameraLookAt [] = {0, 1, 1};
+    double cameraLookAt [] = {0, 0, 0};
     
     /* Orthonormal system */
     // Z axis

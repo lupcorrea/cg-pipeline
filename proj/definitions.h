@@ -7,6 +7,7 @@
 #define FILENAME "monkey_head2.obj"
 
 #define DIM 4
+#define DEGREES 3.14159265/180
 
 extern unsigned char * FBptr;
 
